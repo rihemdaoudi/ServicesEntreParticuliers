@@ -20,7 +20,7 @@ public interface ServiceRepository extends JpaRepository<Services, Long>{
 	List<Services> findByCategorie(Categorie categorie);
 	List<Services> findByCategorieIdCat(Long id);
 	List<Services> findByOrderByNomServiceAsc();
-	@Query("select s from Services s oder by s.nomService ASC, s.prixService DESC")
+	@Query("select s from Services s order by s.nomService ASC, s.prixService DESC")
 	List<Services> TrierServicesNomsPrix();
 
 }
