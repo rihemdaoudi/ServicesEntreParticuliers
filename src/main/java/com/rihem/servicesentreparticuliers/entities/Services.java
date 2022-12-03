@@ -2,11 +2,14 @@ package com.rihem.servicesentreparticuliers.entities;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 
 @Entity
@@ -17,9 +20,10 @@ public class Services {
 	
 	private String nomService;
 	private Double prixService;
+	@CreationTimestamp
 	private Date dateCreation;
 	
-	@ManyToOne 
+	@ManyToOne(cascade=CascadeType.ALL)
 	private Categorie categorie;
 	
 	
