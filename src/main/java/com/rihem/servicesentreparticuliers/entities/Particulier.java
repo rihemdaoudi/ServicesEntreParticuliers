@@ -1,10 +1,13 @@
 package com.rihem.servicesentreparticuliers.entities;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Particulier {
@@ -30,7 +33,8 @@ public class Particulier {
 
      @Column(name = "PARTICULIER_PHONE")
      private int particulierPhone;
-
+     @OneToMany(mappedBy="particulier")
+     private List<RDV> rdv ;
 
  public Particulier() { }
 

@@ -12,14 +12,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.rihem.servicesentreparticuliers.entities.Bricoleur;
 import com.rihem.servicesentreparticuliers.entities.Particulier;
 import com.rihem.servicesentreparticuliers.service.ParticulierService;
 
 @RestController
-@RequestMapping("/Particulier/")
+@RequestMapping("/api")
 public class ParticulierController {
 	@Autowired
-    private ParticulierService particulierService;
+   public ParticulierService particulierService;
 
     @GetMapping(path = "/hello")
     public String getMessage() {
@@ -27,6 +28,7 @@ public class ParticulierController {
     }
 
     @PostMapping("/save")
+   
     public Particulier saveParticulier (@RequestBody Particulier particulier) {
 
         return particulierService.saveParticulier(particulier);

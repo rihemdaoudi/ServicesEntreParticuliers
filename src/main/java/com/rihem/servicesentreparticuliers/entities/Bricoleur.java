@@ -1,10 +1,23 @@
 package com.rihem.servicesentreparticuliers.entities;
 
+
+
+
+import java.io.Serializable;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+import org.hibernate.service.Service;
+import org.springframework.web.bind.annotation.RequestBody;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,16 +26,35 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class Bricoleur {
+public class Bricoleur implements Serializable {
 	@Id
 
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+private long id ;
+	private String nom ;
+	private String prenom ;
+	private String Email;
+	private String motdepasse ;
+	private Integer telephone ;
+	private String adresse ;
+	@OneToMany(mappedBy="bricoleur")
+	private List<Services> services ;
+	@OneToMany(mappedBy="bricoleur")
+	private List<RDV> rdv ;
 	
-	private Long id ;
-	public Long getId() {
+	public List<RDV> getRdv() {
+		return rdv;
+	}
+	public void setRdv(List<RDV> rdv) {
+		this.rdv = rdv;
+	}
+	public void setServices(List<Services> services) {
+		this.services = services;
+	}
+	public long getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 	public String getNom() {
@@ -43,10 +75,16 @@ public class Bricoleur {
 	public void setEmail(String email) {
 		Email = email;
 	}
-	public String getTelephone() {
+	public String getMotdepasse() {
+		return motdepasse;
+	}
+	public void setMotdepasse(String motdepasse) {
+		this.motdepasse = motdepasse;
+	}
+	public Integer getTelephone() {
 		return telephone;
 	}
-	public void setTelephone(String telephone) {
+	public void setTelephone(Integer telephone) {
 		this.telephone = telephone;
 	}
 	public String getAdresse() {
@@ -55,24 +93,29 @@ public class Bricoleur {
 	public void setAdresse(String adresse) {
 		this.adresse = adresse;
 	}
-	public String getAutre() {
-		return autre;
+	@Override
+	public String toString() {
+		return "Bricoleur [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", Email=" + Email + ", motdepasse="
+				+ motdepasse + ", telephone=" + telephone + ", adresse=" + adresse + "]";
 	}
-	public void setAutre(String autre) {
-		this.autre = autre;
+	public Bricoleur(String nom, String prenom, String email, String motdepasse, Integer telephone, String adresse) {
+		super();
+		this.nom = nom;
+		this.prenom = prenom;
+		Email = email;
+		this.motdepasse = motdepasse;
+		this.telephone = telephone;
+		this.adresse = adresse;
 	}
-	public String getService() {
-		return service;
+	
+	public List<Services> getServices() {
+		return services;
 	}
-	public void setService(String service) {
-		this.service = service;
+	public void setService(List<Services> services) {
+		this.services = services;
 	}
-	private String nom ;
-	private String prenom ;
-	private String Email;
-	private String telephone ;
-	private String adresse ;
-	private String autre ;
-	private String service ;
-
+	
+	
+	
+	
 }
