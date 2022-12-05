@@ -10,35 +10,31 @@ import com.rihem.servicesentreparticuliers.repos.ParticulierRepository;
 
 @Service
 public class ParticulierServiceImpl implements ParticulierService {
-	  @Autowired
-	   ParticulierRepository particulierRepository;
+	@Autowired
+	ParticulierRepository particulierRepository;
 
+	@Override
+	public Particulier AjouterParticulier(Particulier p) {
+		particulierRepository.save(p);
+		return p;
+	}
 
-	    public Particulier saveParticulier(Particulier particulier) {
-	        return particulierRepository.save(particulier);
-	    }
+	@Override
+	public void DeleteParticulier(Particulier p) {
+		particulierRepository.delete(p);
+		
+	}
 
-	    @Override
-	    public Particulier updateParticulier(Particulier particulier) {
-	        return particulierRepository.save(particulier);
-	    }
+	@Override
+	public void DeleteParticulier(Long id) {
+		particulierRepository.deleteById(id);
+		
+	}
 
-
-	    @Override
-	    public List<Particulier> getAllParticulier() {
-
-	        return (List<Particulier>) particulierRepository.findAll();
-	    }
-
-	    @Override
-	    public Particulier getParticulier(Long particulierId) {
-	        return particulierRepository.findById(particulierId).get();
-	    }
-
-	    @Override
-	    public void deleteParticulier(Long particulierId) {
-	        particulierRepository.deleteById(particulierId);
-	    }
-
+	@Override
+	public List<Particulier> getAllParticulier() {
+		return (List<Particulier>) particulierRepository.findAll();
+	}
+	 
 
 }

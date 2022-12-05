@@ -6,20 +6,12 @@ package com.rihem.servicesentreparticuliers.entities;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-
-import org.hibernate.service.Service;
-import org.springframework.web.bind.annotation.RequestBody;
-
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
@@ -39,15 +31,7 @@ private long id ;
 	private String adresse ;
 	@OneToMany(mappedBy="bricoleur")
 	private List<Services> services ;
-	@OneToMany(mappedBy="bricoleur")
-	private List<RDV> rdv ;
-	
-	public List<RDV> getRdv() {
-		return rdv;
-	}
-	public void setRdv(List<RDV> rdv) {
-		this.rdv = rdv;
-	}
+
 	public void setServices(List<Services> services) {
 		this.services = services;
 	}
