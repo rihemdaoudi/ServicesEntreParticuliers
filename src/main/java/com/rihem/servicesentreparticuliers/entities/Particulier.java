@@ -1,5 +1,9 @@
 package com.rihem.servicesentreparticuliers.entities;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.io.Serializable;
 
 
@@ -11,7 +15,10 @@ import javax.persistence.Id;
 
 
 @Entity
-public class Particulier implements Serializable {
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class Particulier {
 	@Id
 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
