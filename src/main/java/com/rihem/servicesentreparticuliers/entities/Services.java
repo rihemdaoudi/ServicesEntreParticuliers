@@ -22,17 +22,55 @@ public class Services {
 	
 	private String nomService;
 	private Double prixService;
-	@CreationTimestamp
-	private Date dateCreation;
-	
+	private String descriptionService;
+	private Double dureeService;
+
+	private String photoService;
+
 	@ManyToOne(cascade=CascadeType.ALL)
 	private Categorie categorie;
-	
+
 	@ManyToOne
 	private Bricoleur bricoleur ;
-	
+
 	@OneToMany(mappedBy="services")
 	private List<RDV> rdv ;
+
+	public Services(Long idService, String nomService, Double prixService, String descriptionService, Double dureeService, String photoService) {
+		this.idService = idService;
+		this.nomService = nomService;
+		this.prixService = prixService;
+		this.descriptionService = descriptionService;
+		this.dureeService = dureeService;
+		this.photoService=photoService;
+
+	}
+	public Services() {
+		super();
+	}
+
+	public String getPhotoService() {
+		return photoService;
+	}
+
+	public void setPhotoService(String photoService) {
+		this.photoService = photoService;
+	}
+
+	public String getDescriptionService() {
+		return descriptionService;
+	}
+	public void setDescriptionService(String descriptionService) {
+		this.descriptionService = descriptionService;
+	}
+
+	public Double getDureeService() {
+		return dureeService;
+	}
+
+	public void setDureeService(Double dureeService) {
+		this.dureeService = dureeService;
+	}
 	
 	public List<RDV> getRdv() {
 		return rdv;
@@ -58,18 +96,7 @@ public class Services {
 
 
 
-	public Services() {
-		super();
-	}
-	
-	
-	
-	public Services(String nomService, Double prixService, Date dateCreation) {
-		super();
-		this.nomService = nomService;
-		this.prixService = prixService;
-		this.dateCreation = dateCreation;
-	}
+
 
 
 
@@ -91,19 +118,14 @@ public class Services {
 	public void setPrixService(Double prixService) {
 		this.prixService = prixService;
 	}
-	public Date getDateCreation() {
-		return dateCreation;
-	}
-	public void setDateCreation(Date dateCreation) {
-		this.dateCreation = dateCreation;
-	}
+
 
 
 
 	@Override
 	public String toString() {
 		return "Service [idService=" + idService + ", nomService=" + nomService + ", prixService=" + prixService
-				+ ", dateCreation=" + dateCreation + "]";
+				+ ", dateCreation=" +  "]";
 	}
 
 
