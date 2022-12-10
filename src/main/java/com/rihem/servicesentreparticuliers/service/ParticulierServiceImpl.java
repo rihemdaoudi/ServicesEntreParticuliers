@@ -1,6 +1,7 @@
 package com.rihem.servicesentreparticuliers.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,6 +27,11 @@ public class ParticulierServiceImpl implements ParticulierService {
 	}
 
 	@Override
+	public Optional<Particulier> getParticulierById(Long id) {
+		return particulierRepository.findById(id);
+	}
+
+	@Override
 	public void DeleteParticulier(Long id) {
 		particulierRepository.deleteById(id);
 		
@@ -35,6 +41,17 @@ public class ParticulierServiceImpl implements ParticulierService {
 	public List<Particulier> getAllParticulier() {
 		return (List<Particulier>) particulierRepository.findAll();
 	}
-	 
+
+	@Override
+	public Particulier findByEmailAndPassword(String email, String password) {
+		return particulierRepository.findByEmailpAndMotdepassep(email, password);
+	}
+
+	@Override
+	public Particulier updateParticulier(Particulier particulier) {
+		particulierRepository.save(particulier);
+		return particulier;
+	}
+
 
 }
