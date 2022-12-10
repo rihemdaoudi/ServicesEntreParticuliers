@@ -25,10 +25,21 @@ public class Particulier {
 	private long id ;
 	private String nomp ;
 	private String prenomp ;
-	private String Emailp;
+	private String emailp;
 	private String motdepassep ;
 	private Integer telephonep ;
 	private String adressep ;
+	private boolean isBrico;
+
+	public boolean isBrico() {
+		return isBrico;
+	}
+
+	public void setBrico(boolean brico) {
+		isBrico = brico;
+	}
+
+
 	public long getId() {
 		return id;
 	}
@@ -48,10 +59,10 @@ public class Particulier {
 		this.prenomp = prenomp;
 	}
 	public String getEmailp() {
-		return Emailp;
+		return emailp;
 	}
 	public void setEmailp(String emailp) {
-		Emailp = emailp;
+		emailp = emailp;
 	}
 	public String getMotdepassep() {
 		return motdepassep;
@@ -73,18 +84,19 @@ public class Particulier {
 	}
 	@Override
 	public String toString() {
-		return "Particulier [id=" + id + ", nomp=" + nomp + ", prenomp=" + prenomp + ", Emailp=" + Emailp
+		return "Particulier [id=" + id + ", nomp=" + nomp + ", prenomp=" + prenomp + ", emailp=" + emailp
 				+ ", motdepassep=" + motdepassep + ", telephonep=" + telephonep + ", adressep=" + adressep + "]";
 	}
 	public Particulier(String nomp, String prenomp, String emailp, String motdepassep, Integer telephonep,
-			String adressep) {
+			String adressep, boolean isBrico) {
 		super();
 		this.nomp = nomp;
 		this.prenomp = prenomp;
-		Emailp = emailp;
+		this.emailp = emailp;
 		this.motdepassep = motdepassep;
 		this.telephonep = telephonep;
 		this.adressep = adressep;
+		this.isBrico=isBrico;
 	}
 	
 
